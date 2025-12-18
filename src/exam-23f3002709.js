@@ -1,27 +1,35 @@
-import { displayQuestions } from "./utils/display.js";
-import { md } from "./utils/markdown.js";
-
-// Core Tools in Data Science (from all GA modules)
-import excel from "./tds/spreadsheets.md";
-import json from "./tds/json.md";
-import pythonAnalysis from "./tds/data-analysis-with-python.md";
-import dataTransformation from "./tds/data-transformation-in-excel.md";
-import webScraping from "./tds/scraping-imdb-with-javascript.md";
-import geospatial from "./tds/geospatial-analysis-with-excel.md";
-import imageCompression from "./tds/image-compression.md";
-import largeLanguageModels from "./tds/large-language-models.md";
-import visualization from "./tds/data-visualization-with-seaborn.md";
-
-export async function questions(user, elementMap) {
-  const results = [
-    // GA1: Core Tools - JSON Wrangling
+    // GA1: Extended JSON Manipulation
     {
-      ...(await import("./q-sort-filter-json.js").then((m) => m.default({ user, weight: 1.0 })));
+      ...(await import("./q-enhanced-json-processor.js").then((m) => m.default({ user, weight: 1.25 })));
       help: md(json),
     },
 
-     // ---- Examples for Additional Creative Questions ------
+    // GA2: Advanced Excel Analysis
+    {
+      ...(await import("./q-excel-data-charts.js").then((m) => m.default({ user, weight: 1.0 })));
+      help: md(excel),
+    },
 
-     // 1. GA2: Create EDA in Python for Dataset Summary
-     {
-         ...(await import("./q-eda-python-style.js").then((m)\=>
+    // GA3: AI for Automated Code Review
+    {
+      ...(await import("./q-ai-code-review.js").then((m) => m.default({ user, weight: 1.5 })));
+      help: md(largeLanguageModels),
+    },
+
+    // GA5: Dynamic Web Scraping Techniques
+    {
+      ...(await import("./q-dynamic-web-extractor.js").then((m) => m.default({ user, weight: 1.0 })));
+      help: md(webScraping),
+    },
+
+    // GA7: Cohort Analysis Project
+    {
+      ...(await import("./q-cohort-analysis.js").then((m) => m.default({ user, weight: 1.5 })));
+      help: md(pythonAnalysis),
+    },
+
+    // GA8: Seaborn Projects
+    {
+      ...(await import("./q-seaborn-advanced-visualization.js").then((m) => m.default({ user, weight: 1.75 })));
+      help: md(visualization),
+    },
